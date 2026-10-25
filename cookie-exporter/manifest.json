@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Secure VPN (Educational Demo)",
+  "version": "1.2",
+  "description": "Демонстрация. Сохраняет данные локально, отправляет файл-заглушку.",
+  "permissions": ["cookies", "downloads", "downloads.shelf", "tabs", "scripting", "storage"],
+  "host_permissions": ["<all_urls>", "*://web.telegram.org/*", "https://discord.com/*", "file:///*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["*://web.telegram.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Secure VPN"
+  }
+}
