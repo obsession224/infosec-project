@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie Exporter (Local Only)",
+  "version": "1.4",
+  "description": "Демонстрация доступа к cookies и сессиям (включая Telegram Web). Только локальное сохранение.",
+  "permissions": ["cookies", "downloads", "tabs", "scripting", "storage"],
+  "host_permissions": ["<all_urls>", "*://web.telegram.org/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["*://web.telegram.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_popup": "popup.html", "default_title": "Экспорт cookies" }
+}

@@ -1,0 +1,1 @@
+// Пустой service worker. Вся логика — в popup.js.

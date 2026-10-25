@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 440px; padding: 12px; font-family: system-ui, sans-serif; font-size: 13px; }
+    h3 { margin: 0 0 6px; }
+    h4 { margin: 12px 0 6px; }
+    .warning { background: #fff3cd; border: 1px solid #ffc107; padding: 8px; border-radius: 4px; margin: 8px 0; font-size: 12px; }
+    .danger { background: #fdecea; border: 1px solid #f5c6cb; padding: 8px; border-radius: 4px; margin: 8px 0; font-size: 12px; }
+    button { width: 100%; padding: 9px; margin-top: 6px; cursor: pointer; }
+    #summary { margin-top: 10px; font-size: 12px; color: #333; }
+    #domains { margin-top: 8px; max-height: 140px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; padding: 6px; }
+    .domain-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #eee; }
+    .domain-row:last-child { border-bottom: none; }
+    .http-only { color: #b00020; font-weight: 600; }
+    .sensitive { color: #b00020; font-weight: 700; }
+    #tgStatus { font-size: 12px; color: #555; white-space: pre-wrap; margin-top: 6px; }
+    #status { margin-top: 8px; font-size: 12px; color: #555; white-space: pre-wrap; }
+    input[type="file"] { width: 100%; margin-top: 6px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h3>Экспорт cookies и сессий</h3>
+  <div class="warning">
+    Доступ ко <b>всем cookies</b> и к <b>сессии Telegram Web</b>
+  </div>
+
+  <div id="summary">Загрузка...</div>
+  <div id="domains"></div>
+
+  <button id="exportAll">Сохранить ВСЕ cookies в файл</button>
+  <button id="exportCurrent">Сохранить cookies текущего сайта</button>
+
+  <h4>Telegram Web</h4>
+  <div id="tgStatus">Проверка...</div>
+  <button id="checkTg">Проверить сессию Telegram</button>
+  <button id="exportTg">Сохранить сессию Telegram в файл</button>
+
+  <button id="exportEverything" style="margin-top:12px;background:#e8f0fe;">Сохранить ВСЁ в один файл</button>
+
+  <h4>Импорт cookies</h4>
+  <div class="danger">
+    Выбери файл, сохранённый этим расширением. Куки будут записаны обратно в браузер.
+  </div>
+  <input type="file" id="importFile" accept=".txt">
+  <button id="importCookies">Импортировать cookies из файла</button>
+
+  <h4>Импорт сессии Telegram (WebK/A)</h4>
+  <div class="danger">
+    Выбери файл, сохранённый этим расширением. Ключи будут записаны в localStorage.
+  </div>
+  <input type="file" id="importTgFile" accept=".txt">
+  <button id="importTg">Импортировать сессию Telegram</button>
+
+  <div id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
